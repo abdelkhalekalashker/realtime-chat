@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  get 'rooms' , to: 'rooms#index'
-  devise_for :users
+  
+  get 'messages/create'
+  
   root 'rooms#index'
-  resources :users
   resources :rooms
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+  resources :rooms do
+    resources :messages
+  end
+  resources :users
+    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
