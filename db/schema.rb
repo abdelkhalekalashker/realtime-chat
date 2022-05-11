@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_11_163431) do
+ActiveRecord::Schema.define(version: 2022_05_11_202531) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2022_05_11_163431) do
     t.integer "number"
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_participants_on_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -45,4 +54,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_163431) do
 
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "participants", "rooms"
+  add_foreign_key "participants", "users"
 end
