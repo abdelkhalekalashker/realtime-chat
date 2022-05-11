@@ -13,15 +13,16 @@ class RoomsController < ApplicationController
     end
 
     def show
+
         @single_room = Room.find(params[:id])
+        @messages = @single_room.messages
 
         @room = Room.new
         @rooms = Room.public_rooms
 
         @message = Message.new
 
-
-        @messages = @single_room.messages
+        @counter = @single_room.counter
 
         @users = User.all_except(current_user)
         
