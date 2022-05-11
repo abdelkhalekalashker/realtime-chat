@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
     def show
 
         @single_room = Room.find(params[:id])
-        @messages = @single_room.messages
+        @messages = @single_room.messages.includes(:user)
 
         @room = Room.new
         @rooms = Room.public_rooms
