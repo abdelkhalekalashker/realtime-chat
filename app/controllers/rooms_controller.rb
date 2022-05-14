@@ -28,4 +28,16 @@ class RoomsController < ApplicationController
         
         render "index"
     end
+
+    def join
+         @room = Room.find(params[:id])
+         current_user.joined_rooms << @rooms
+         redirect_to @room
+    end
+
+    def leave
+        @room = Room.find(params[:id])
+        current_user.joined_rooms.delete(@room)
+        redirect_to rooms_path
+    end
 end

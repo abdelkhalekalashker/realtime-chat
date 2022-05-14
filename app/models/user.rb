@@ -8,4 +8,6 @@ class User < ApplicationRecord
          after_create_commit { broadcast_append_to "users" }
 
          has_many :messages, dependent: :destroy
+         has_many :joinables , dependent: :destroy
+         has_many :join_room , through: :joinables , source: :room
 end

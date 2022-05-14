@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'search'  , to: "search#index"
   get 'messages/create'
-  
+  get "room/leave/:id" ,to: 'rooms#leave'
+  get "room/join/:id" ,to: "rooms#join"
   root 'rooms#index'
   resources :rooms
   devise_for :users
