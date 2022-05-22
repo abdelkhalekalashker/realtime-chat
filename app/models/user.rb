@@ -9,5 +9,21 @@ class User < ApplicationRecord
 
          has_many :messages, dependent: :destroy
          has_many :joinables , dependent: :destroy
-         has_many :join_room , through: :joinables , source: :room
+         has_many :joined_rooms , through: :joinables , source: :room
+
+         enum role: %i[user admin]
+
+         after_initialize :set_default_role , if: :new_record?
+
+
+         def has_joined(room)
+            joined_rooms.include?(room)
+         end
+
+
+         private 
+
+         def set_default_role
+          self.role ||= :user
+         end
 end

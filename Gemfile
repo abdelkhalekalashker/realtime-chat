@@ -62,3 +62,5 @@ gem "turbo-rails", "~> 1.0"
 gem "ransack", "~> 3.2"
 
 gem "bullet", "~> 7.0"
+
+gem "stimulus-rails", "~> 1.0"
