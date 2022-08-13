@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_05_14_011241) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "joinables", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
