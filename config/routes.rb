@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
   root 'rooms#index'
   resources :rooms
+
+  devise_scope :user do
+    # Redirests signing out users back to sign-in
+    get "users", to: "devise/sessions#new"
+  end
+
   devise_for :users
   resources :rooms do
     resources :messages
