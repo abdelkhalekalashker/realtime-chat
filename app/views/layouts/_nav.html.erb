@@ -18,7 +18,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><%= link_to current_user.email , user_path(current_user) , class: "dropdown-item" %></li>
-              <li><%= link_to 'Sign out', destroy_user_session_path , method: :delete , class: "dropdown-item" %></li>
+              <li><%= link_to 'Sign out', users_sign_out_path  , class: "dropdown-item" %></li>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'Edit profile', edit_user_registration_path , class: "dropdown-item" %></li>
             </ul>
