@@ -1,8 +1,3 @@
-<% if current_user.has_joined(room) %>
-    <%= link_to  'leave' , leave_room_path(room), method: :delete %>
-    
+
+  <%= link_to "Chat", join_room_path(room), method: :post  %>
   
-<% else %>
-  <%= link_to "join", join_room_path(room), method: :post  %>
-  
-<% end %>

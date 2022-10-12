@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @room = Room.new
     @message = Message.new
     @room_name = get_name(@user, current_user)
-    @single_room = Room.where(name: @room_name).first || Room.create_private_room([@user, current_user], @room_name)
+    @single_room = Room.where(name: @room_name).first #|| Room.create_private_room([@user, current_user], @room_name)
     @messages = @single_room.messages
 
     render "rooms/index"
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   private
 
   def get_name(user1, user2)
-    users = [user1, user2].sort
-    "private_#{users[0].email}_#{users[1].email}"
+    current_user == user1 ? "#{user2.email}" : "#{user1.email}"
   end
 end
