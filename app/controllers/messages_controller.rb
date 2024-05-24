@@ -9,6 +9,8 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :room_id).merge(user_id: current_user.id)
+    premitted_data = params.require(:message).permit(:content, :room_id)
+    room = Room.find(premitted_data[:room_id])
+    premitted_data.merge!(number: room.messages_count, user_id: current_user.id)
   end
 end
