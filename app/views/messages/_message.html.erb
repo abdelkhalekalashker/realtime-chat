@@ -1,7 +1,7 @@
 <div class="cont-<%=message.user_id%>">
   <div class="message-box msg-<%= message.user_id %>">
     <% unless message.room.is_private %>
-              <h6>(<%= message.number %>)  </h6>
+              <h6>(<%= message.number %>)</h6>
 
       <h6 class="name"> <%= message.user.email %> </h6>
     <% end %>

@@ -7,23 +7,23 @@ class RoomsController < ApplicationController
 
   def index
     @joined_rooms = current_user.joined_rooms
-    @rooms = Room.public_rooms
-    @users = User.all_except(current_user)
+    @joinable_rooms =  current_user.joinable_rooms
+
     render 'index', status: :ok
   end
 
   def create
     @room = Room.new(room_params)
     if @room.save
-      render 'index', status: :created
+      render 'show', status: :created
     else
       render json: @room.errors, status: :unprocessable_entity
     end
   end
 
   def show
-    @single_room = Room.includes(:messages).find(params[:id])
-    render 'index'
+    @room = Room.includes(messages: :user).find(params[:id])
+    render 'show', status: :ok
   end
 
   def search

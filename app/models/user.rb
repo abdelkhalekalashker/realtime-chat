@@ -19,6 +19,10 @@ class User < ApplicationRecord
     joined_rooms.include?(room)
   end
 
+  def joinable_rooms
+    Room.public_rooms.joins(:joinables).where.not(joinables: {user_id: id})
+  end
+
   private
 
   def set_default_role

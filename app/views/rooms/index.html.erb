@@ -1,6 +1,20 @@
 <div id="chatroom_container" class="row bg-dark text-light">
   <div id="side_panel" class="col-md-4 col-sm-4">
-    <h5> <%= current_user.email %> </h5>
+    <h5 align="center"> <%= current_user.email %> </h5>
+    <h3> Joined Rooms </h3>
+    <% @joined_rooms.each do |room| %>
+      <div>
+        <%= render 'rooms/room', room: room, action: "Chat" %>
+      </div>
+    <% end %>
+
+    <h3> Joinable Rooms </h3>
+    <% @joinable_rooms.each do |room| %>
+      <div>
+        <%= render 'rooms/room', room: room, action: "Join" %>
+      </div>
+    <% end %>
+
   </div>
   <div id="room_container"
   class="col-md-8 col-sm-8 bg-dark text-light">
