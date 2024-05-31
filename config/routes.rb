@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'users/show'
   get 'search'  , to: "search#index"
   get 'messages/create'
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
   delete 'rooms/leave/:id', to: 'rooms#leave', as: 'leave_room'
- post 'rooms/join/:id', to: 'rooms#join', as: 'join_room'
+  post 'rooms/join/:id', to: 'rooms#join', as: 'join_room'
   resources :users
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

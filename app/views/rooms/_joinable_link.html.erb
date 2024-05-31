@@ -1,5 +1,1 @@
-  <% if action == "Chat" %>
-    <%= link_to action, room, data: {turbo: "false"} %>
-  <% else %>
-    <%= link_to action, join_room_path(room), method: :post  %>
-  <% end %>
+<%= link_to action, room, data: {turbo: "false"} %>
