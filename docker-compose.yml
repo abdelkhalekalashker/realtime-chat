@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  web:
+    build: .
+    volumes:
+      - .:/myapp
+    depends_on:
+      - db
+    command: ["rails", "server", "-b", "0.0.0.0"]
